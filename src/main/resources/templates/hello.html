@@ -1,2 +1,20 @@
 <h1>Don</h1>
 <p>hello</p>
+<div>
+    <form id="myForm" action="/receiveSayHello">
+        <input type="text" name="info">
+        <button id="btn" type="button" onclick="testA()">发送</button>
+    </form>
+</div>
+<script>
+    function testA() {
+        var btn = document.getElementById("btn");
+        btn.onclick = "javascript:void(0)";
+        btn.disabled = "disabled";
+        //testB();
+    }
+
+    function testB() {
+        document.getElementById("myForm").submit();
+    }
+</script>

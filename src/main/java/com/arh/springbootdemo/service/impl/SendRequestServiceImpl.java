@@ -76,12 +76,15 @@ public class SendRequestServiceImpl implements ISendRequestService {
                     .setConnectionRequestTimeout(35000)//请求超时时间
                     .setSocketTimeout(60000)//数据读取超时时间
                     .build();
+            //指定RequestConfig代替HTTPClient默认的config
             httpGet.setConfig(requestConfig);
             HttpContext httpContext = HttpClientContext.create();
             httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
             String content = EntityUtils.toString(httpEntity, "utf-8");
             logger.info(content);
+            //减少内存占用
+            //EntityUtils.consume(httpEntity);
         } catch (URISyntaxException e) {
             logger.error(e.getMessage(), e);
         } catch (ClientProtocolException e) {

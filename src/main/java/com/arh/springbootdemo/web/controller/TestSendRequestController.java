@@ -30,13 +30,15 @@ public class TestSendRequestController {
         try {
             //sendRequestService.singleDoGet("https://www.baidu.com/", null);
             Map<String, String> map = new HashMap<>();
-            map.put("remremberMeInput", "true");
-            map.put("timeSign", "2019-10-30 17:14:09");
-            map.put("corpCode", "dayeesz");
-            map.put("userName", "superdm");
-            map.put("password", "6056F1C687624020EF034EB04C97E24C");
-            map.put("remremberMe", "true");
-            sendRequestService.singleDoPost("http://current.wintalent.cn/wt/login", map);
+//            map.put("remremberMeInput", "true");
+//            map.put("timeSign", "2019-10-30 17:14:09");
+//            map.put("corpCode", "dayeesz");
+//            map.put("userName", "superdm");
+//            map.put("password", "6056F1C687624020EF034EB04C97E24C");
+//            map.put("remremberMe", "true");
+//            sendRequestService.singleDoPost("http://current.wintalent.cn/wt/login", map);
+//            sendRequestService.singleDoGet("https://www.baidu.com/", map);
+            sendRequestService.testGet();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }

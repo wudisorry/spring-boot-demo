@@ -11,16 +11,19 @@ import java.util.Map;
 
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.DefaultBHttpClientConnection;
 import org.apache.http.impl.DefaultConnectionReuseStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicHttpRequest;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.*;
@@ -37,12 +40,22 @@ import com.arh.springbootdemo.util.CollectionUtil;
  * @Author chenli
  * @Date 2019/10/29
  * uri和url区别 https://www.jianshu.com/p/db65de31fe1b
+ * HttpCore is a set of low level HTTP transport components that can be used to build custom client and server side HTTP services with a minimal footprint.
+ *
+ * HttpClient is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore.
+ *
  **/
 @Service
 public class SendRequestServiceImpl implements ISendRequestService {
 
     private static final Logger logger = LoggerFactory.getLogger(SendRequestServiceImpl.class);
 
+    /**
+     *
+     * @param url 要带上协议
+     * @param paramMap
+     */
+    @Override
     public void singleDoGet(String url, Map<String, String> paramMap) {
         CloseableHttpClient httpClient = null;
         httpClient = HttpClients.createDefault();
@@ -64,6 +77,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
                     .setSocketTimeout(60000)//数据读取超时时间
                     .build();
             httpGet.setConfig(requestConfig);
+            HttpContext httpContext = HttpClientContext.create();
             httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
             String content = EntityUtils.toString(httpEntity, "utf-8");
@@ -93,6 +107,11 @@ public class SendRequestServiceImpl implements ISendRequestService {
 
     }
 
+    /**
+     *
+     * @param url 要带上协议
+     * @param paramMap
+     */
     @Override
     public void singleDoPost(String url, Map<String, String> paramMap) {
         CloseableHttpClient httpClient = null;
@@ -149,20 +168,20 @@ public class SendRequestServiceImpl implements ISendRequestService {
         }
     }
 
+
+    //Examples For HttpComponents Core
     public void testGet() throws Exception {
         HttpProcessor httpproc = HttpProcessorBuilder.create()
                 .add(new RequestContent())
                 .add(new RequestTargetHost())
                 .add(new RequestConnControl())
-                .add(new RequestUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"))
+                .add(new RequestUserAgent("Test/1.1"))
                 .add(new RequestExpectContinue(true)).build();
 
         HttpRequestExecutor httpexecutor = new HttpRequestExecutor();
 
         HttpCoreContext coreContext = HttpCoreContext.create();
-        //HttpHost host = new HttpHost("localhost", 8080);
-        //HttpGet
-        HttpHost host = HttpHost.create("https://www.baidu.com");
+        HttpHost host = new HttpHost("www.baidu.com", 80);
         coreContext.setTargetHost(host);
 
         DefaultBHttpClientConnection conn = new DefaultBHttpClientConnection(8 * 1024);
@@ -186,7 +205,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
                 httpexecutor.postProcess(response, httpproc, coreContext);
 
                 System.out.println("<< Response: " + response.getStatusLine());
-                System.out.println(EntityUtils.toString(response.getEntity()));
+                System.out.println(EntityUtils.toString(response.getEntity(),"utf-8"));
                 System.out.println("==============");
                 if (!connStrategy.keepAlive(response, coreContext)) {
                     conn.close();
@@ -197,5 +216,11 @@ public class SendRequestServiceImpl implements ISendRequestService {
         } finally {
             conn.close();
         }
+    }
+
+
+    private HttpClient getHttpClient(){
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
+        return null;
     }
 }

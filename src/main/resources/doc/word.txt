@@ -1,3 +1,18 @@
 preface 前言
-significant 重要的 突出的
+significant 重要的 突出的 形容词
 functionality 功能性 名词
+flexibility 灵活性 名词
+robust 强大的 形容词
+leverage 对...产生影响，加杠杆 动词
+fundamentals 基本原理 名词
+essential 必要的 形容词
+involve 设计 动词
+out of the box 即时可用，开箱即用
+uniform 制服，也可做统一
+interpreted 解释执行的 形容词
+numeric 数字 号 名词
+textual 文字的 形容词
+phrase 短语 名词
+individual 个，个体 形容词
+distinguishe 区别 动词
+on the fly 即时的

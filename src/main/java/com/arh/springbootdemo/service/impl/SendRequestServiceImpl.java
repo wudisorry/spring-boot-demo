@@ -12,6 +12,7 @@ import java.util.Map;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -44,6 +45,10 @@ import com.arh.springbootdemo.util.CollectionUtil;
  *
  * HttpClient is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore.
  *
+ * entity.getContent().close()和response.close()
+ * The difference between closing the content stream and closing the response is that the former will attempt to keep the underlying connection alive by consuming the entity content while the latter immediately shuts down and discards the connection.
+ * When working with streaming entities, one can use the EntityUtils#consume(HttpEntity) method to ensure that the entity content has been fully consumed and the underlying stream has been closed.
+ * There can be situations, however, when only a small portion of the entire response content needs to be retrieved and the performance penalty for consuming the remaining content and making the connection reusable is too high, in which case one can terminate the content stream by closing the response.
  **/
 @Service
 public class SendRequestServiceImpl implements ISendRequestService {
@@ -81,6 +86,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
             HttpContext httpContext = HttpClientContext.create();
             httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
+            EntityUtils.consume(httpEntity);
             String content = EntityUtils.toString(httpEntity, "utf-8");
             logger.info(content);
             //减少内存占用
@@ -168,6 +174,14 @@ public class SendRequestServiceImpl implements ISendRequestService {
                     logger.error(e.getMessage(), e);
                 }
             }
+        }
+    }
+
+    class MyResponseHandler implements ResponseHandler{
+
+        @Override
+        public Object handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
+            return null;
         }
     }
 

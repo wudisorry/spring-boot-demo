@@ -1,6 +1,8 @@
 package com.arh.springbootdemo;
 
 import org.apache.http.*;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicHeaderElementIterator;
 import org.apache.http.message.BasicHttpResponse;
 import org.junit.jupiter.api.Test;
@@ -40,5 +42,13 @@ public class SendRequestTest {
                 System.out.println(" " + params[i]);
             }
         }
+    }
+
+    @Test
+    public void testEntity1() {
+        StringEntity entity = new StringEntity("haha", ContentType.create("text/plain", "utf-8"));
+        System.out.println(entity.getContentType());
+        System.out.println(entity.getContentLength());
+
     }
 }

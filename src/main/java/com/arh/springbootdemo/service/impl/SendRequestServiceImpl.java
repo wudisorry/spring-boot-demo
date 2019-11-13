@@ -42,13 +42,8 @@ import com.arh.springbootdemo.util.CollectionUtil;
  * @Date 2019/10/29
  * uri和url区别 https://www.jianshu.com/p/db65de31fe1b
  * HttpCore is a set of low level HTTP transport components that can be used to build custom client and server side HTTP services with a minimal footprint.
- *
+ * <p>
  * HttpClient is a HTTP/1.1 compliant HTTP agent implementation based on HttpCore.
- *
- * entity.getContent().close()和response.close()
- * The difference between closing the content stream and closing the response is that the former will attempt to keep the underlying connection alive by consuming the entity content while the latter immediately shuts down and discards the connection.
- * When working with streaming entities, one can use the EntityUtils#consume(HttpEntity) method to ensure that the entity content has been fully consumed and the underlying stream has been closed.
- * There can be situations, however, when only a small portion of the entire response content needs to be retrieved and the performance penalty for consuming the remaining content and making the connection reusable is too high, in which case one can terminate the content stream by closing the response.
  **/
 @Service
 public class SendRequestServiceImpl implements ISendRequestService {

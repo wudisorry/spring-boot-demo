@@ -26,3 +26,7 @@ discard 丢弃
 situation 情况
 portion 一部分 名词
 deallocate 接触分配
+come with 附带
+retrieve 找回 取回
+discourage 阻止 使泄气 动词
+accomplish 完成 动词

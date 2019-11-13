@@ -1,10 +1,16 @@
 package com.arh.springbootdemo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.http.*;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.message.BasicHeaderElementIterator;
 import org.apache.http.message.BasicHttpResponse;
+import org.apache.http.message.BasicNameValuePair;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -50,5 +56,16 @@ public class SendRequestTest {
         System.out.println(entity.getContentType());
         System.out.println(entity.getContentLength());
 
+    }
+
+    @Test
+    public void testEntity2(){
+        List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+        formparams.add(new BasicNameValuePair("param1", "value1"));
+        formparams.add(new BasicNameValuePair("param2", "value2"));
+        UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
+        HttpPost httppost = new HttpPost("http://localhost/handler.do");
+        httppost.setEntity(entity);
+        System.out.println(httppost.getURI());
     }
 }

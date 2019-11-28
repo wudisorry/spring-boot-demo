@@ -9,7 +9,7 @@ essential 必要的 形容词
 involve 涉及 动词
 out of the box 即时可用，开箱即用
 uniform 制服，也可做统一
-interpreted 解释执行的 形容词
+interpret 解释执行的 形容词
 numeric 数字 号 名词
 textual 文字的 形容词
 phrase 短语 名词
@@ -35,3 +35,4 @@ hint 提示 暗示 动词名词
 essential 完全必要的
 impose 推行，把...强加于 动词
 restriction 限制 名词
+simulate 冒充 假装 动词

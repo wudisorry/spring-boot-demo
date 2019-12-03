@@ -36,3 +36,5 @@ essential 完全必要的
 impose 推行，把...强加于 动词
 restriction 限制 名词
 simulate 冒充 假装 动词
+arbitrary 任意的
+interraction 相互作用 名词

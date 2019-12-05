@@ -1,40 +1,50 @@
 preface 前言
-significant 重要的 突出的 形容词
-functionality 功能性 名词
-flexibility 灵活性 名词
-robust 强大的 形容词
-leverage 对...产生影响，加杠杆 动词
-fundamentals 基本原理 名词
-essential 必要的 形容词
-involve 涉及 动词
+significant 【形容词】重要的 突出的
+functionality 【名词】功能性
+flexibility 【名词】灵活性
+robust 【形容词】强大的
+leverage 【动词】对...产生影响，加杠杆
+fundamentals 【名词】基本原理
+essential 【形容词】必要的
+involve 【动词】涉及
 out of the box 即时可用，开箱即用
 uniform 制服，也可做统一
-interpret 解释执行的 形容词
-numeric 数字 号 名词
-textual 文字的 形容词
-phrase 短语 名词
-individual 个，个体 形容词
-distinguishe 区别 动词
+interpret 【形容词】解释执行的
+numeric 【名词】数字 号
+textual 【形容词】文字的
+phrase 【名词】短语
+individual 【形容词】个，个体
+distinguishe 【动词】区别
 on the fly 即时的
-Repeatable 可重复的 形容词
+Repeatable 【形容词】可重复的
 possible 合适的 适用的 可能
-proper 正确的 符合规则的 适当的 形容词
+proper 【形容词】正确的 符合规则的 适当的
 former 前者
 attempt to 试图
 underlying 潜在的
 discard 丢弃
 situation 情况
-portion 一部分 名词
+portion 【名词】一部分
 deallocate 接触分配
 come with 附带
 retrieve 找回 取回
-discourage 阻止 使泄气 动词
-accomplish 完成 动词
+discourage 【动词】阻止 使泄气
+accomplish 【动词】完成
 chunk 块 厚片
-hint 提示 暗示 动词名词
+hint 【动词名词】提示 暗示
 essential 完全必要的
-impose 推行，把...强加于 动词
-restriction 限制 名词
-simulate 冒充 假装 动词
+impose 【动词】推行，把...强加于
+restriction 【名词】限制
+simulate 【动词】冒充 假装
 arbitrary 任意的
-interraction 相互作用 名词
+interraction 【名词】相互作用
+intervention 介入 干预
+throughput 通量
+state 【名词】状况 国 州 【动词】 声明 陈述
+mechanism 【名词】机制 机构 机关
+be capable of 能够
+intermediate 【形容词】中间 中级 【动词】调解
+layer 【名词】层 层次
+be referred to 是指
+the first and only 第一个也是唯一一个
+protocol 【名词】协议

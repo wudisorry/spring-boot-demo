@@ -1,0 +1,15 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app" v-bind:title="message">
+    {{message}}
+    <span v-if="flag">看到我了吗</span>
+    <ol>
+        <li v-for="item in items">
+            {{item.text}}
+        </li>
+    </ol>
+    <button v-on:click="firstMethod">click me</button>
+    <span v-on:mouseenter="secondMethod">鼠标移上去</span>
+    <input v-model="message">
+</div>
+<script src="firstVueScript.js"></script>

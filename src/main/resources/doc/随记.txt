@@ -1,0 +1,16 @@
+JavaScript不在是只有表单验证这个功能。
+浏览器的渲染引擎能够将HTML/CSS/JavaScript文本及相应的资源文件转换成图像结果。渲染引擎的主要作用是将资源文件转化为用户可见的结果。由于JavaScript本质上是解释型语言，在浏览器端解析和执行，比编译型语言慢，
+V8引擎是一个JavaScript引擎实现，被谷歌收购。在运行JavaScript之前，相比其它的JavaScript的引擎转换成字节码或解释执行，V8将其编译成原生机器码（IA-32, x86-64, ARM, or MIPS CPUs），并且使用了如内联缓存（inline caching）等方法来提高性能。
+JavaScript程序在V8引擎下的运行速度媲美二进制程序。
+Google Chrome 浏览器用的就是这个引擎。V8 可以单独运行，也可以嵌入 C++ 应用当中。
+相关url：https://blog.csdn.net/heyeqingquan/article/details/78839699
+http://www.broadview.com.cn/article/419435
+
+Node.js是一个Javascript运行环境(runtime environment)，实质是对Chrome V8引擎进行了封装。Node.js对一些特殊用例进行优化，提供替代的API，使得V8在非浏览器环境下运行得更好。 V8引擎执行Javascript的速度非常快，性能非常好。Node.js是一个基于Chrome JavaScript运行时建立的平台， 用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动， 非阻塞I/O模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。
+相关url：https://blog.csdn.net/w2ndong/article/details/80243652
+
+安装nodeJs
+相关url：https://www.jianshu.com/p/13f45e24b1de
+
+
+

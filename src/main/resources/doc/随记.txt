@@ -12,5 +12,6 @@ Node.js是一个Javascript运行环境(runtime environment)，实质是对Chrome
 安装nodeJs
 相关url：https://www.jianshu.com/p/13f45e24b1de
 
-
+相关url：http://es6.ruanyifeng.com/
+https://cn.vuejs.org/v2/guide/index.html
 

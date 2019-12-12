@@ -11,5 +11,13 @@
     <button v-on:click="firstMethod">click me</button>
     <span v-on:mouseenter="secondMethod">鼠标移上去</span>
     <input v-model="message">
+    <div v-bind:id="'list'+idValue">模板语法-插值-JavaScript表达式</div>
 </div>
 <script src="firstVueScript.js"></script>
+
+<div id=componentApp>
+    <first-component></first-component>
+    <span>从父组件获取值:</span>
+    <li-component v-for="obj in items" v-bind:item="obj"></li-component>
+</div>
+<script src="vueComponentScript.js"></script>

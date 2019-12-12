@@ -9,7 +9,8 @@ var app = new Vue({
             text: 'Don'
         }, {
             text: 'hello world'
-        }]
+        }],
+        idValue: 'aaa'
     },
     methods: {
         firstMethod: function () {

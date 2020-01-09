@@ -35,7 +35,7 @@ hint 【动词名词】提示 暗示
 essential 完全必要的
 impose 【动词】推行，把...强加于
 restriction 【名词】限制
-simulate 【动词】冒充 假装
+simulate 【动词】冒充 假装 模拟
 arbitrary 任意的
 interraction 【名词】相互作用
 intervention 介入 干预

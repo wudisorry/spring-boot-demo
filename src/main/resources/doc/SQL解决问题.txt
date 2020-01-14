@@ -1,0 +1,22 @@
+1.查看mysql是否有线程死锁，线程耗时，mysql压力情况等
+连接数据库后，随便在哪个库下使用SHOW FULL PROCESSLIST;命令，查看所有线程
+找出有问题的线程，使用KILL [CONNECTION | QUERY] processlist_id命令关闭
+-- 查询执行时间超过2分钟的线程，然后拼接成 kill 语句
+select concat('kill ', id, ';')
+from information_schema.processlist
+where command != 'Sleep'
+and time > 2*60
+order by time desc
+
+2.查询执行慢的sql语句
+MySQL提供了一种功能，用来记录在MySQL中响应时间超过阀值的语句，叫做慢查询日志。具体指运行时间超过long_query_time值的SQL，则会被记录到慢查询日志中。
+long_query_time的默认值为10，意思是运行10S以上的语句。默认情况下，Mysql数据库并不启动慢查询日志，需要我们手动来设置这个参数，当然，如果不是调优需要的话，
+一般不建议启动该参数，因为开启慢查询日志会或多或少带来一定的性能影响。慢查询日志支持将日志记录写入文件，也支持将日志记录写入数据库表。
+
+3.查询MySQL服务的数据库元数据（描述数据属性的信息），信息
+INFORMATION_SCHEMA
+官方8.0文档 url：https://dev.mysql.com/doc/refman/8.0/en/information-schema-introduction.html
+information_schema.innodb_trx–当前运行的所有事务，
+information_schema.innodb_locks–当前出现的锁
+information_schema.innodb_lock_waits–锁等待的对应关系
+

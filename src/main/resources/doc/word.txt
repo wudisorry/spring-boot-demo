@@ -48,3 +48,4 @@ layer 【名词】层 层次
 be referred to 是指
 the first and only 第一个也是唯一一个
 protocol 【名词】协议
+scaffolding 【名词】脚手架

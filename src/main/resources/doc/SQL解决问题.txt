@@ -1,4 +1,79 @@
-1.查看mysql是否有线程死锁，线程耗时，mysql压力情况等
+1.比较日期大小
+用大于小于符号前要转成同一格式
+MySql：
+(1)使用UNIX_TIMESTAMP函数，把字符串变时间戳。字符串必须满足yyyy-MM-dd HH:mm:ss格式
+UNIX_TIMESTAMP(p.F_INTERVIEW_BEGIN_TIME) >= UNIX_TIMESTAMP( your string)
+(2)使用DATE_FORMAT函数，把比较的日期变为同一个格式
+DATE_FORMAT(p.F_INTERVIEW_BEGIN_TIME,'%Y-%m-%d %H:%i')>=DATE_FORMAT(your string,'%Y-%m-%d %H:%i')
+date函数是只获取日期，time函数是只获取时间
+
+Oracle:
+(1)使用TO_DATE函数
+p.F_INTERVIEW_END_TIME>=TO_DATE(your string,'yyyy-MM-dd HH24:mi')
+
+2.获取当前时间
+MySql：
+(1)now函数，CURDATE函数，CURTIME函数
+(2)sysdate函数
+NOW()取的是语句开始执行的时间，SYSDATE()取的是动态的实时时间。
+SELECT NOW(),SYSDATE(),SLEEP(3),NOW(),SYSDATE()
+先查询了NOW()和SYSDATE()，然后sleep了3秒，再查询NOW()和SYSDATE()，结果如下：
+SYSDATE会比NOW晚3秒
+
+Oracle:
+sysdate
+(MySql 没有dual表，直接select XX就行)
+
+3.条件判断
+MySql：
+if(表达式，X，X)
+
+Oracle：
+decode
+
+4.Sql中的嵌套子查询和相关子查询
+相关子查询：相关子查询的执行依赖于外部查询。多数情况下是子查询的WHERE子句中引用了外部查询的表。与嵌套子查询不同，相关子查询无法独立于外部查询而得到解决。
+执行过程：
+（1）从外层查询中取出一个元组，将元组相关列的值传给内层查询。
+（2）执行内层查询，得到子查询操作的值。
+（3）外查询根据子查询返回的结果或结果集得到满足条件的行。
+（4）然后外层查询取出下一个元组重复做步骤1-3，直到外层的元组全部处理完毕。
+
+5. 连接字符串
+MySql：
+concat()
+concat_ws()
+group_concat()与上面最根本的区别：可以行转列
+启发链接:https://www.cnblogs.com/lucky-girl/p/9482169.html#commentform
+
+6.过滤条件find_in_set()
+Mysql有个find_in_set()从一行元素以,分割的字符串中过滤数据
+相关链接：https://www.jianshu.com/p/b2c1ba0ba34f
+
+7.聚合查询
+Mysql:
+group_concat + substr
+相关链接：https://www.cnblogs.com/zhwbqd/p/4205821.html
+https://blog.csdn.net/m0_37797991/article/details/80511855
+Oracle:
+OVER(PARTITION BY)
+
+8.group BY
+MySql：
+允许select的列与group BY的列不一样，mysql会随机选一行展示
+Oracle：
+select的列与group BY的列必须一样，否则报错
+
+9.explain
+使用explain命令分析sql语句
+url：https://www.jianshu.com/p/d4863178b4f8
+
+10.迁移数据库
+mysqldump -h192.168.0.205 -P3306  -uchenli -p123 --opt trunk9| mysql -h127.0.0.1 -P3306  -uroot -p123456 -C ygbx8
+注意锁表，可加参数不缩表
+
+11.show processlist和Kill命令
+查看mysql是否有线程死锁，线程耗时，mysql压力情况等
 连接数据库后，随便在哪个库下使用SHOW FULL PROCESSLIST;命令，查看所有线程
 找出有问题的线程，使用KILL [CONNECTION | QUERY] processlist_id命令关闭
 -- 查询执行时间超过2分钟的线程，然后拼接成 kill 语句
@@ -8,12 +83,12 @@ where command != 'Sleep'
 and time > 2*60
 order by time desc
 
-2.查询执行慢的sql语句
+12.查询执行慢的sql语句
 MySQL提供了一种功能，用来记录在MySQL中响应时间超过阀值的语句，叫做慢查询日志。具体指运行时间超过long_query_time值的SQL，则会被记录到慢查询日志中。
 long_query_time的默认值为10，意思是运行10S以上的语句。默认情况下，Mysql数据库并不启动慢查询日志，需要我们手动来设置这个参数，当然，如果不是调优需要的话，
 一般不建议启动该参数，因为开启慢查询日志会或多或少带来一定的性能影响。慢查询日志支持将日志记录写入文件，也支持将日志记录写入数据库表。
 
-3.查询MySQL服务的数据库元数据（描述数据属性的信息），信息
+13.查询MySQL服务的数据库元数据（描述数据属性的信息），信息
 INFORMATION_SCHEMA
 官方8.0文档 url：https://dev.mysql.com/doc/refman/8.0/en/information-schema-introduction.html
 information_schema.innodb_trx–当前运行的所有事务，

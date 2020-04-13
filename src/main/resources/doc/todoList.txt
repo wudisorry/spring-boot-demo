@@ -1,0 +1,5 @@
+1.hibernate 同一事务里，外层方法查询后，里层方法又查询一般，然后做改动更新提交会报错？需要手动从session缓存中移除对象？
+使用了evict方法
+url：https://blog.csdn.net/lsnaruto/article/details/85080656
+
+2.工具类整理

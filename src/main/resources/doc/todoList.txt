@@ -1,0 +1,12 @@
+1.hibernate 同一事务里，外层方法查询后，里层方法又查询一般，然后做改动更新提交会报错？需要手动从session缓存中移除对象？
+使用了evict方法
+url：https://blog.csdn.net/lsnaruto/article/details/85080656
+
+2.工具类整理
+
+3.远程调试 arthas
+搜索remote debug时发现arthas工具
+远程调试url：https://www.cnblogs.com/yougewe/p/10821973.html
+会明分享arthas url： https://segmentfault.com/a/1190000020625287?utm_source=tag-newest
+
+4.加入系统属性之后Spring配置文件不需要加$

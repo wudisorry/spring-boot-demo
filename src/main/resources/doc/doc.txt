@@ -1,0 +1,31 @@
+使用日志是为了取代System.out.println();
+输出日志，而不是用System.out.println()，有以下几个好处：
+    可以设置输出样式，避免自己每次都写"ERROR: " + var;
+    可以设置输出级别，禁止某些级别输出。例如，只输出错误日志;
+    可以被重定向到文件，这样可以在程序运行结束后查看日志;
+    可以按包名控制日志级别，只输出某些包打的日志;
+    等等;
+1.JDK Logging
+java内置的日志包，通过java.util.logging.Logger的静态方法获取
+缺点:
+Logging系统在JVM启动时读取配置文件并完成初始化，一旦开始运行main()方法，就无法修改配置;
+配置不太方便，需要在JVM启动时传递参数-Djava.util.logging.config.file=<config-file-name>.
+
+2.Commons Logging
+Jakarta  Commons-logging（JCL）是apache最早提供的日志的门面接口。提供简单的日志实现以及日志解耦功能。
+特色:
+它可以挂接不同的日志系统，并通过配置文件指定挂接的日志系统。默认情况下，Commons Loggin自动搜索并使用Log4j（Log4j是另一个流行的日志系统），如果没有找到Log4j，再使用JDK Logging。
+使用以用log4j为例：
+(1)添加依赖
+(2)修改commons-logging.properties文件：显示地指定log4j (看原理3知道可不配置)
+org.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger
+配置log4j.properties文件
+(3)使用JCL提供的两个基本的抽象类： Log( 基本记录器 ) 和 LogFactory( 负责创建 Log 实例 ) 。
+原理：
+(1)首先在classpath下寻找commons-logging.properties文件。如果找到，则使用其中定义的Log实现类；如果找不到，则在查找是否已定义系统环境变量org.apache.commons.logging.Log，找到则使用其定义的Log实现类；
+(2)查看classpath中是否有Log4j的包，如果发现，则自动使用Log4j作为日志实现类；
+(3)否则，使用JDK自身的日志实现类（JDK1.4以后才有日志实现类）；
+(4)否则，使用commons-logging自己提供的一个简单的日志实现类SimpleLog；
+缺点:
+依赖冲突？exclusions commons-logging
+

@@ -5,6 +5,9 @@
     可以被重定向到文件，这样可以在程序运行结束后查看日志;
     可以按包名控制日志级别，只输出某些包打的日志;
     等等;
+日志现状：
+url：https://blog.csdn.net/xintonghanchuang/article/details/90752323
+
 1.JDK Logging
 java内置的日志包，通过java.util.logging.Logger的静态方法获取
 缺点:
@@ -15,7 +18,8 @@ Logging系统在JVM启动时读取配置文件并完成初始化，一旦开始�
 Jakarta  Commons-logging（JCL）是apache最早提供的日志的门面接口。提供简单的日志实现以及日志解耦功能。
 特色:
 它可以挂接不同的日志系统，并通过配置文件指定挂接的日志系统。默认情况下，Commons Loggin自动搜索并使用Log4j（Log4j是另一个流行的日志系统），如果没有找到Log4j，再使用JDK Logging。
-使用以用log4j为例：
+有点像jdbc，JCL是接口，log4j是实现。
+使用(以用log4j 1为例)：
 (1)添加依赖
 (2)修改commons-logging.properties文件：显示地指定log4j (看原理3知道可不配置)
 org.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger
@@ -29,3 +33,44 @@ org.apache.commons.logging.Log=org.apache.commons.logging.impl.Log4JLogger
 缺点:
 依赖冲突？exclusions commons-logging
 
+3.log4j 1和log4j 2
+log4j 1 通过Logger.getLogger()来获取实例
+log4j 1已经不再维护，并且官方推荐使用log4j 2
+官方公告url：https://blogs.apache.org/foundation/entry/apache_logging_services_project_announces
+
+4.log4j 2
+前言:
+log4j 2 通过LogManager.getLogger()来获取实例
+官方文档url：https://logging.apache.org/log4j/2.x/index.html
+左侧Articles and Tutorials菜单为官方推荐的教程
+左侧Configuration菜单为配置教程
+核心概念：
+三大组件：loggers, appenders 和layouts
+Logger: 日志记录器，日志记录的核心类，用于输出不同日志级别的消息。
+Appender: 日志输出目标，用于指定日志输出的目的地，如控制台、文件等等。
+Layout: 日志格式化器，用于指定日志按照什么格式输出，是日志输出的格式化器。
+原理：
+Log4j包含4种ConfigurationFactory实现: one for JSON, one for YAML, one for properties, and one for XML.
+(1)Log4j will inspect the "log4j.configurationFile" system property and, if set, will attempt to load the configuration using the ConfigurationFactory that matches the file extension.
+(2)If no system property is set the properties ConfigurationFactory will look for log4j2-test.properties in the classpath.
+(3)If no such file is found the YAML ConfigurationFactory will look for log4j2-test.yaml or log4j2-test.yml in the classpath.
+(4)If no such file is found the JSON ConfigurationFactory will look for log4j2-test.json or log4j2-test.jsn in the classpath.
+(5)If no such file is found the XML ConfigurationFactory will look for log4j2-test.xml in the classpath.
+(6)If a test file cannot be located the properties ConfigurationFactory will look for log4j2.properties on the classpath.
+(7)If a properties file cannot be located the YAML ConfigurationFactory will look for log4j2.yaml or log4j2.yml on the classpath.
+(8)If a YAML file cannot be located the JSON ConfigurationFactory will look for log4j2.json or log4j2.jsn on the classpath.
+(9)If a JSON file cannot be located the XML ConfigurationFactory will try to locate log4j2.xml on the classpath.
+(10)If no configuration file could be located the DefaultConfiguration will be used. This will cause logging output to go to the console.
+配置文件语法直接看官方文档
+appenders知道配置按时间和文件大小滚动类型的RollingRandomAccessFile就ok了
+Loggers需要知道起过滤作用，比如只要打印某个包下的某个级别日志
+
+5.slf4j
+类似于Commons Logging，也是个日志接口，和它配套的实现是Logback，当然也能和其他实现一起用比如log4j 2，log4j 1（使用log4j 1需要用到一层桥接slf4j-log4j12）
+Commons Logging和SLF4J对比：
+Commons Logging	                                        SLF4J
+org.apache.commons.logging.Log	                        org.slf4j.Logger
+org.apache.commons.logging.LogFactory	                org.slf4j.LoggerFactory
+
+6.logback
+Logback是由log4j创始人设计的另一个开源日志组件,官方网站： http://logback.qos.ch

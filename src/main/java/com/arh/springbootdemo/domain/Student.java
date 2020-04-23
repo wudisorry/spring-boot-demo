@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @Author chenli
  * @Date 2019/10/28
  **/
+
 public class Student implements Serializable {
     private Integer id;
 

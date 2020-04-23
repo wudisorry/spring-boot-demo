@@ -66,11 +66,16 @@ appenders知道配置按时间和文件大小滚动类型的RollingRandomAccessF
 Loggers需要知道起过滤作用，比如只要打印某个包下的某个级别日志
 
 5.slf4j
-类似于Commons Logging，也是个日志接口，和它配套的实现是Logback，当然也能和其他实现一起用比如log4j 2，log4j 1（使用log4j 1需要用到一层桥接slf4j-log4j12）
+类似于Commons Logging，也是个日志接口，和它配套的实现是Logback，当然也能和其他实现一起用比如log4j 2，log4j 1（需要用到一层桥接）
 Commons Logging和SLF4J对比：
 Commons Logging	                                        SLF4J
 org.apache.commons.logging.Log	                        org.slf4j.Logger
 org.apache.commons.logging.LogFactory	                org.slf4j.LoggerFactory
+注意点:
+与log4j 1，log4j 2桥接的jar包是不一样的
+当我用log4j2作为日志实现，但是用了log4j1的桥接包时发生了错误，使用mvn dependency:tree查看依赖,找到是依赖版本有问题
+可以看到log4j用了2个版本
+mvn 命令使用帮助url:https://blog.csdn.net/jiahao1186/article/details/97899713
 
 6.logback
 Logback是由log4j创始人设计的另一个开源日志组件,官方网站： http://logback.qos.ch

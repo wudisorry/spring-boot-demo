@@ -1,0 +1,5 @@
+sevice +dao 用 mybatis plus
+改了mybatis provider 写起来又贼烦
+JPA的 自己写了个模板生成代码
+给你个思路 先用sql查询出所有表和表对应的列，然后把列转换成各种大写 小写，驼峰的格式，然后利用freemarker thymeleaf这种模板引擎生成文件到指定模块下
+mybatis plus 官网看代码生成器

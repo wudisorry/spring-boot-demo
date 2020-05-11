@@ -10,3 +10,5 @@ url：https://blog.csdn.net/lsnaruto/article/details/85080656
 会明分享arthas url： https://segmentfault.com/a/1190000020625287?utm_source=tag-newest
 
 4.加入系统属性之后Spring配置文件不需要加$
+
+5.jpaRepository通过@Query注解查出来的可以转换为DTO类，DTO类还可以写成接口,只需要get方法

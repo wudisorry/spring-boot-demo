@@ -23,3 +23,22 @@ https://blog.csdn.net/xiaojinlai123/article/details/90694372
 https://github.com/macrozheng/mall-admin-web
 https://github.com/macrozheng/mall
 
+springBoot profile
+通过profile来根据环境使用对应配置
+在application.yml文件里定义使用激活的profile
+通过application-{profile}.yml来定义不同环境的配置
+使用idea启动时，就会使用激活的配置
+如果使用mvn命令打成jar包（需要配置spring-boot-maven-plugin插件），可以用命令java -jar ***.jar --spring.profiles.active=dev覆盖掉指定的激活配置（不设置就还是使用配置文件里指定的）
+
+url:https://zhuanlan.zhihu.com/p/78104880
+1.JavaConfig
+可以看注解Bean的解释
+执行被@Bean标注的方法都会被拦截,执行bookService()会被拦截，里面调用dependencyService()也会被拦截
+在第一次执行bookService()里的dependencyService()方法时，被拦截，查看ioc容器里是否有IDependencyService的实例，没有则构造出来
+到执行userservice()里的dependencyService()方法时，被拦截，容器里已经有该实例了，则不构建直接拿出来用
+所以IBookService和IUserservice实例里的IDependencyService实例都是同一个
+
+
+
+@ComponentScan
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="300">
+    <properties>
+        <!-- 日志输出目录：对于一些特定环境，可以直接配置成绝对目录 -->
+        <!-- ${sys:catalina.base}起tomcat时有-D命令设置 -->
+        <property name="LOG_HOME1">${sys:catalina.base}/MyLog/secondMVNLog</property>
+        <property name="LOG_HOME2">C:/Chen_code/MyLog/secondMVNLog</property>
+        <property name="FILE_NAME">app</property>
+    </properties>
+    <Appenders>
+        <!-- 输出日志到控制台上 -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
+        </Console>
+        <!-- 输出日志到制定文件 -->
+        <File name="MyFile" fileName="C:/Chen_code/MyLog/appForFile.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
+        </File>
+        <!-- 输出的文件名叫 /${FILE_NAME}.log 根据property节点配置，这里的文件名就是app.log -->
+        <!-- 并且每隔一分钟，归档到如 /2020-04-21/app-2020-04-21 17-31-1.log -->
+        <!-- %i是序号意思 一般如果根据文件大小再要切割文件，则会加上序号，这样一分钟内就可以分辨文件顺序 -->
+        <RollingRandomAccessFile name="MyRollingFile"
+                                 fileName="${LOG_HOME2}/${FILE_NAME}.log"
+                                 filePattern="${LOG_HOME2}/$${date:yyyy-MM-dd}/${FILE_NAME}-%d{yyyy-MM-dd HH-mm}-%i.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
+            <Policies>
+                <!-- 跟filePattern里配置的文件名呼应，现在配置是每分钟触发一次 -->
+                <TimeBasedTriggeringPolicy interval="1" />
+            </Policies>
+            <DefaultRolloverStrategy max="20" />
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="mylog" level="trace" additivity="false">
+            <AppenderRef ref="MyRollingFile" />
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

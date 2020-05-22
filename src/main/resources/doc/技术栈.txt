@@ -1,0 +1,74 @@
+微服务相关
+	1.注册中心 
+	  nacos（目前用） 
+	  eureka（用过） 
+	  consul (没用过)
+	  zookeeper（以前用dubbo时候用过一点）
+	2.配置中心
+	  cloud config（以前用过 要配合rabbitmq做事件传播）
+	  apollo （携程的，可以灰度发布，用过一阶段用的不深）
+	  nacos （目前用）
+	3.网关
+	  zuul （以前用）
+	  gateway (目前用 配合db做成动态路由)
+	4.分布式事务
+	  Seata （目前用 使用场景很少 我也不是很懂 一般业务加分布式锁就搞定了）
+	  EasyTransaction  （没用过）
+	5.消息队列
+	  rabbitmq （做配置中心时候用过） 
+	  rocketmq （做IOT 同步设备数据时候用过基础，基于阿里云平台）
+	  kafka (东吴用 体量大时候用，延迟最高)
+	6.熔断
+	  Hystrix 
+	7.服务追踪
+	  Sleuth+Zipkin （目前用）
+	8.日志管路
+	  Elasticsearch+Logstash+Kibana （目前用）
+数据库相关
+    1.TSQL  
+	  1.1 mysql （目前用）
+	  1.2 oracle （以前用过，快忘光了）
+	  1.3 DB2 (没用过，民生项目有没去了解)
+	  1.4 sqlserver (学校学的 忘光了)
+	  1.5 postgre （第一个项目视频网站用，太早了，接触不深）
+	2.NOSQL
+	  1.1 redis  （目前用，缓存，分布式锁）
+	  1.2 mongodb （目前用，只用于大字段，日志）
+	3.NewSQL
+	  一个没用过
+框架
+   1.MVC
+     struts1 （东吴神坑项目用，就是一个servlet对象的封装成一个action，没意义）
+	 struts2 （第一个项目视频网站用，就记得各种配置贼烦，每个validate校验要跟action名一致，快忘光了）
+	 springMvc (不逼逼，谁都知道)
+	 jfinal (小项目好用）
+	 springboot 自封装了springMVC ，2.0后提供响应式编程的webFlux 这个学习中，看好
+  2.DI
+    spring core（不逼逼，没看过spring源码的做个P javaweb）
+  3.ORM
+    mybaits (以前用)
+	mybaits plus （mybaits封装 好用方便，用的较少）
+	hibernate  （最早视频项目用，规范，移植性好）
+	JPA（hibernate封装，还提供nosql封装比如mongodb） （目前用，适合代码强迫症）
+  4.安全框架
+    shiro （简单，好用）
+	spring security（功能强大，基于servlet）
+  5.搜索
+    solr （以前用过）
+	Elasticsearch （目前用）
+  6.定时调度
+     spring schedule （简单，适合固定事件需求）
+	 quartz (好用方便，从几年前项目到现在一直用它）)
+     xxl-job (quartz封装，功能强大 适合大项目用)
+  7.网络通信
+    mina （银行内部项目用过，方便）
+	netty  （mina 同作者升级版，谁用谁知道，强大无比，springboot2.0 webFlux自带）
+
+额外补充
+	1.sleuthn 链路跟踪 链路使用来标识一次请求的过程的
+	
+	
+	 
+	 
+
+  

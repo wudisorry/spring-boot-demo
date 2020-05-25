@@ -58,3 +58,5 @@ url:https://zhuanlan.zhihu.com/p/78104880
 spring boot号称会自动配置第三方jar包（通俗讲就是根据应用的依赖、自定义的bean、classpath下有没有某个类 等等因素来猜测你需要的bean，然后注册到IOC容器中）。
 原因在于：首先读取org.springframework.boot.autoconfigure下的META-INF/spring.factories文件，key为EnableAutoConfiguration，value为要注册的类，
 在注册的类上用@ConditionalOnClass注解标注，表示当有XXX.class时才注册进ioc容器。
+
+jpa url:https://zhuanlan.zhihu.com/p/108016975?from_voters_page=true

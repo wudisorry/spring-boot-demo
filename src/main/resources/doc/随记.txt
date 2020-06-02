@@ -60,3 +60,41 @@ spring boot号称会自动配置第三方jar包（通俗讲就是根据应用的
 在注册的类上用@ConditionalOnClass注解标注，表示当有XXX.class时才注册进ioc容器。
 
 jpa url:https://zhuanlan.zhihu.com/p/108016975?from_voters_page=true
+
+MongoDB
+安装url：https://blog.csdn.net/qq_27378621/article/details/80933354
+https://www.cnblogs.com/dreamsqin/p/10885038.html
+https://www.runoob.com/mongodb/mongodb-window-install.html
+
+1.安装
+在安装过程中有选项是否要mongodb作为系统服务启动。
+如果选择了需要，在安装完成后在服务中选择属性，可以在可执行文件路径中看到起服务命令，如：XXX\MongoDB\Server\4.2\bin\mongod.exe --config "C:\Application\MongoDB\Server\4.2\bin\mongod.cfg" --service
+有默认的配置文件mongod.cfg，里面的dbPath，log的path都配好了默认地址。
+也可以自己制定配置文件，存数据的路径
+
+2.概念
+
+3.mongo数据库操作需要使用mongo命令先连接
+    （1）show dbs 查看数据库 如果数据库内容为空则不会显示
+    （2）use <databaseName> 切换指定数据库 如果数据库存在，则切换到这个数据库；如果数据库不存在，则创建该数据库。如果创建了一个新库然后什么都不操作，这个库会被系统删除
+    （3）db 查看当前库
+    （4）db.status() 查看当前库的状态
+    （5）db.dropDatabase() 删除当前所在库
+
+4.文档（Document）
+文档是一组键值（key-value）对（即BSON），相当于RDBMS（关系数据库管理系统：Relational Database Management System)中的一行数据。
+MongoDB 的文档不需要设置相同的字段，并且相同的字段不需要相同的数据类型
+5.集合
+集合就是 MongoDB 文档组，类似于RDBMS中的表格。
+集合存在于数据库中，集合没有固定的结构，这意味着你在对集合可以插入不同格式和类型的数据。
+
+capped collections
+固定大小的集合，是高性能自动的维护对象的插入顺序。非常适合记录日志，必须要显式的创建一个capped collection，指定一个 collection 的大小，单位是字节。collection 的数据存储空间值提前分配的。(因此更新数据时，不能额外增加空间)
+Capped collections 可以按照文档的插入顺序保存到集合中，而且这些文档在磁盘上存放位置也是按照插入顺序来保存的。
+命令如：db.createCollection("mycoll", {capped:true, size:100000})
+
+6.元数据
+命令如：dbname.system.*
+包含多种系统信息的特殊集合
+
+7.ObjectId

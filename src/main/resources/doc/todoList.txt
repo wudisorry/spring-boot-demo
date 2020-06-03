@@ -12,3 +12,16 @@ url：https://blog.csdn.net/lsnaruto/article/details/85080656
 4.加入系统属性之后Spring配置文件不需要加$
 
 5.jpaRepository通过@Query注解查出来的可以转换为DTO类，DTO类还可以写成接口,只需要get方法
+
+6.javaagent url:https://www.cnblogs.com/aspirant/p/8796974.html
+
+7.spring session
+
+8.访问日志 格式
+
+9.轮询 NIO
+
+10.redis 分布式锁
+url:https://zhuanlan.zhihu.com/p/68608779
+解锁时用到了lua脚本
+url：https://www.jianshu.com/p/366d1b4f0d13

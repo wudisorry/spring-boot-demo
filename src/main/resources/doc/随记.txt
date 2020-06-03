@@ -61,6 +61,10 @@ spring boot号称会自动配置第三方jar包（通俗讲就是根据应用的
 
 jpa url:https://zhuanlan.zhihu.com/p/108016975?from_voters_page=true
 
+druid
+url:https://blog.csdn.net/u011490595/article/details/82050344
+
+
 MongoDB
 安装url：https://blog.csdn.net/qq_27378621/article/details/80933354
 https://www.cnblogs.com/dreamsqin/p/10885038.html
@@ -73,6 +77,9 @@ https://www.runoob.com/mongodb/mongodb-window-install.html
 也可以自己制定配置文件，存数据的路径
 
 2.概念
+MongoDB采用Bson格式存储，BSON格式比JSON数据类型更加丰富，
+支持ObjectId、日期类型、正则表达式、JS代码、二进制数据等
+查看函数方法的实现或者查看方法的定义（比如忘记函数的参数了）可以通过输入函数名，不带小括号
 
 3.mongo数据库操作需要使用mongo命令先连接
     （1）show dbs 查看数据库 如果数据库内容为空则不会显示
@@ -84,9 +91,25 @@ https://www.runoob.com/mongodb/mongodb-window-install.html
 4.文档（Document）
 文档是一组键值（key-value）对（即BSON），相当于RDBMS（关系数据库管理系统：Relational Database Management System)中的一行数据。
 MongoDB 的文档不需要设置相同的字段，并且相同的字段不需要相同的数据类型
+插入文档 db.COLLECTION_NAME.insert(document)或db.COLLECTION_NAME.save(document)
+        db.collection.insertOne()
+        db.collection.insertMany()
+        如果 _id 主键存在则更新数据,此时推荐使用db.collection.insertOne() 或 db.collection.replaceOne()
+查看文档 db.COLLECTION_NAME.find()
+更新文档 db.collection.update()
+删除文档 db.collection.remove()
+查询文档 db.collection.find()
+        如果你需要以易读的方式来读取数据，可以使用 pretty()方法
+
 5.集合
 集合就是 MongoDB 文档组，类似于RDBMS中的表格。
 集合存在于数据库中，集合没有固定的结构，这意味着你在对集合可以插入不同格式和类型的数据。
+创建集合 db.createCollection(name, options)
+    name:要创建的集合名称
+    options:可选参数，指定有关内存大小及索引的选项
+*当插入文档时，集合也会被自动创建
+查看集合 show collections或show tables
+删除集合 db.COLLECTION_NAME.drop()
 
 capped collections
 固定大小的集合，是高性能自动的维护对象的插入顺序。非常适合记录日志，必须要显式的创建一个capped collection，指定一个 collection 的大小，单位是字节。collection 的数据存储空间值提前分配的。(因此更新数据时，不能额外增加空间)
@@ -98,3 +121,12 @@ Capped collections 可以按照文档的插入顺序保存到集合中，而且�
 包含多种系统信息的特殊集合
 
 7.ObjectId
+ObjectId 类似唯一主键，可以很快的去生成和排序，包含 12 bytes，含义是：
+前 4 个字节表示创建 unix 时间戳,格林尼治时间 UTC 时间，比北京时间晚了 8 个小时
+接下来的 3 个字节是机器标识码
+紧接的两个字节由进程 id 组成 PID
+最后三个字节是随机数
+
+因为ObjectId中保存了创建的时间戳，可以通过getTimestamp()函数来获取文档的创建时间
+
+MongoDB复制与分片

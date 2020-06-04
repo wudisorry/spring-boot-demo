@@ -1,6 +1,7 @@
 package com.arh.springbootdemo.dao;
 
-import com.arh.springbootdemo.domain.User;
+
+import com.arh.springbootdemo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;

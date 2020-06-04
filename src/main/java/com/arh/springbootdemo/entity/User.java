@@ -1,29 +1,32 @@
-package com.arh.springbootdemo.domain;
+package com.arh.springbootdemo.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @Description
  * @Author chenli
- * @Date 2020/4/24
+ * @Date 2020/6/4
  **/
 @Entity
-@Table(name = "t_user")
+@Table(name="t_user")
 public class User implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_t_user")
-    @SequenceGenerator(name = "seq_t_user", sequenceName = "seq_t_user", allocationSize = 1)
     private Integer id;
+
     @Column
     private String name;
-    @Column
-    private String email;
+
     @Column
     private Date birthday;
+
     @Column
-    private String remark;
+    private String info;
 
     public Integer getId() {
         return id;
@@ -41,14 +44,6 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Date getBirthday() {
         return birthday;
     }
@@ -57,11 +52,11 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getInfo() {
+        return info;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setInfo(String info) {
+        this.info = info;
     }
 }

@@ -1,20 +1,12 @@
 package com.arh.springbootdemo;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-
+import com.arh.springbootdemo.entity.User;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -31,10 +23,15 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HttpContext;
 import org.junit.jupiter.api.Test;
 
-import com.arh.springbootdemo.domain.Student;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Description
@@ -82,7 +79,7 @@ public class SendRequestTest {
     }
 
     @Test
-    public void testEntity2(){
+    public void testEntity2() {
         try {
             URI uri = new URIBuilder()
                     .setScheme("http")
@@ -110,14 +107,14 @@ public class SendRequestTest {
     }
 
     @Test
-    public void testResponseHandler(){
+    public void testResponseHandler() {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpget = new HttpGet("http://localhost/json");
 
-        ResponseHandler<Student> rh = new ResponseHandler<Student>() {
+        ResponseHandler<User> rh = new ResponseHandler<User>() {
 
             @Override
-            public Student handleResponse(
+            public User handleResponse(
                     final HttpResponse response) throws IOException {
                 StatusLine statusLine = response.getStatusLine();
                 HttpEntity entity = response.getEntity();
@@ -133,18 +130,18 @@ public class SendRequestTest {
                 ContentType contentType = ContentType.getOrDefault(entity);
                 Charset charset = contentType.getCharset();
                 Reader reader = new InputStreamReader(entity.getContent(), charset);
-                return gson.fromJson(reader, Student.class);
+                return gson.fromJson(reader, User.class);
             }
         };
         CloseableHttpClient httpClient = null;
         try {
-            Student s = httpClient.execute(httpget, rh);
+            User u = httpClient.execute(httpget, rh);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void test() throws Exception{
+    public void test() throws Exception {
         CloseableHttpClient httpclient = HttpClients.custom()
                 .addInterceptorLast(new HttpRequestInterceptor() {
 

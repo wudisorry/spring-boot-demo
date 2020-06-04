@@ -1,7 +1,7 @@
 package com.arh.springbootdemo;
 
 import com.arh.springbootdemo.dao.IUserRepository;
-import com.arh.springbootdemo.domain.User;
+import com.arh.springbootdemo.entity.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

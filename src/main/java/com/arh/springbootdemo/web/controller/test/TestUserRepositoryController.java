@@ -1,7 +1,7 @@
 package com.arh.springbootdemo.web.controller.test;
 
 import com.arh.springbootdemo.dao.IUserRepository;
-import com.arh.springbootdemo.domain.User;
+import com.arh.springbootdemo.entity.User;
 import com.arh.springbootdemo.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +24,6 @@ public class TestUserRepositoryController {
             User user = new User();
             user.setName("tom");
             user.setBirthday(DateUtil.parseDate("1998-02-02"));
-            user.setEmail("123@qq.com");
             userRepository.save(user);
         } catch (Exception e) {
             e.printStackTrace();

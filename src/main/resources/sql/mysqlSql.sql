@@ -3,5 +3,6 @@ create table t_user(
 	name VARCHAR(20),
 	birthday DATETIME,
 	info VARCHAR(200),
+	updateTime DATETIME,
 	PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

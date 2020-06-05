@@ -138,3 +138,7 @@ MongoDB复制与分片
 如@PropertySource({"classpath:XXX/config.properties","classpath:XXX/config_${anotherfile.configinject}.properties"})
 引入外部配置文件组：${anotherfile.configinject}的值来自config.properties
 如果application.yml和其他资源文件有相同的key，就算你不指定application.yml，也会从application.yml取值
+
+
+
+

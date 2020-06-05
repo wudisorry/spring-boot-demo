@@ -25,3 +25,9 @@ url：https://blog.csdn.net/lsnaruto/article/details/85080656
 url:https://zhuanlan.zhihu.com/p/68608779
 解锁时用到了lua脚本
 url：https://www.jianshu.com/p/366d1b4f0d13
+redis分布式锁
+锁超时后导致多个线程获得锁
+起个守护线程，在一段时间内更新过期时间
+秒杀？url：https://www.jianshu.com/p/83224c0f3bb9
+redission来做获取不到怎么让他限时一直去获取
+dx用的是curator +zk

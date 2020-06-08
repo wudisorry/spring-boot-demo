@@ -31,3 +31,4 @@ redis分布式锁
 秒杀？url：https://www.jianshu.com/p/83224c0f3bb9
 redission来做获取不到怎么让他限时一直去获取
 dx用的是curator +zk
+https://www.cnblogs.com/clawhub/p/12031673.html

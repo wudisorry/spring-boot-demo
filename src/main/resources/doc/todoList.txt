@@ -32,3 +32,5 @@ redis分布式锁
 redission来做获取不到怎么让他限时一直去获取
 dx用的是curator +zk
 https://www.cnblogs.com/clawhub/p/12031673.html
+other:
+https://github.com/9526xu/redis-lock/blob/master/src/main/java/com/example/lock/SimpleRedisLock.java

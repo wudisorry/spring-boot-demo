@@ -1,9 +1,9 @@
 package com.arh.springbootdemo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GeneratorType;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,6 +17,8 @@ import java.util.Date;
 public class User implements Serializable {
 
     @Id
+    @GenericGenerator(name = "chenliG", strategy = "assigned")
+    @GeneratedValue(generator = "chenliG")
     private Integer id;
 
     @Column

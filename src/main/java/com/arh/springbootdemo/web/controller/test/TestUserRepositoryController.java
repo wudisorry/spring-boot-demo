@@ -2,6 +2,7 @@ package com.arh.springbootdemo.web.controller.test;
 
 import com.arh.springbootdemo.dao.IUserRepository;
 import com.arh.springbootdemo.entity.User;
+import com.arh.springbootdemo.service.IUserService;
 import com.arh.springbootdemo.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,9 @@ public class TestUserRepositoryController {
     @Autowired
     private IUserRepository userRepository;
 
+    @Autowired
+    private IUserService userService;
+
     @RequestMapping("/addUser")
     public void sayHello() {
         try {
@@ -25,6 +29,19 @@ public class TestUserRepositoryController {
             user.setName("tom");
             user.setBirthday(DateUtil.parseDate("1998-02-02"));
             userRepository.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/testAdduser")
+    public void testAddUser(){
+        try {
+            User user = new User();
+            user.setId(200);
+            user.setName("tom");
+            user.setBirthday(DateUtil.parseDate("1998-02-02"));
+            userService.addUser(user);
         } catch (Exception e) {
             e.printStackTrace();
         }

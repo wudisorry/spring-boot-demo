@@ -145,10 +145,18 @@ admin数据库
 当Mongod启用auth选项时，用户需要创建数据库帐号，访问时根据帐号信息来鉴权，而数据库帐号信息就存储在admin数据库下。
 强烈建议不要使用admin数据库存储应用业务数据
 admin数据库里的system.users、system.roles2个集合的数据，MongoDB会cache在内存里，这样不用每次鉴权都从磁盘加载用户角色信息。
-url:
+
+Mongodb用户验证登陆
+简历账号参考url：
 https://www.cnblogs.com/phoenix1630/p/10725160.html
 https://cloud.tencent.com/developer/article/1446551
+java与Mongodb连接参考url：
 https://blog.csdn.net/qq_36760753/article/details/81149077
+启动具有访问控制权限的MongoDB实例
+启动命令里加--auth 或者在配置文件里配置authorization: "enabled"
+
+spring boot与mongodb
+https://blog.csdn.net/stronglyh/article/details/81024588
 
 
 @ConditionalOnProperty(name = "com.arh.propertyBeanWithAnnoValue.enable", havingValue = "true", matchIfMissing = false)

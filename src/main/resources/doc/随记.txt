@@ -64,6 +64,8 @@ jpa url:https://zhuanlan.zhihu.com/p/108016975?from_voters_page=true
 druid
 url:https://blog.csdn.net/u011490595/article/details/82050344
 
+AOP
+url:https://liweidan.cn/java/frame/spring-source/2019/12/15/431/#AdvisorBean
 
 MongoDB
 安装url：https://blog.csdn.net/qq_27378621/article/details/80933354

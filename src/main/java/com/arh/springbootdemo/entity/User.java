@@ -17,8 +17,7 @@ import java.util.Date;
 public class User implements Serializable {
 
     @Id
-    @GenericGenerator(name = "chenliG", strategy = "assigned")
-    @GeneratedValue(generator = "chenliG")
+    @GeneratedValue
     private Integer id;
 
     @Column

@@ -60,6 +60,7 @@ public class TestUserRepositoryController {
             User user = new User();
             user.setName("tom");
             user.setBirthday(DateUtil.parseDate("1998-02-02"));
+            user.setEmail("123321@qq.com");
             userService.addUser(user);
         } catch (Exception e) {
             e.printStackTrace();

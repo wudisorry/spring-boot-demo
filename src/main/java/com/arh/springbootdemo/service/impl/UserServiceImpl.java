@@ -29,6 +29,6 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void addUser(User user) {
         userRepository.save(user);
-        throw new MyServiceException("就是想报错");
+        //throw new MyServiceException("就是想报错");
     }
 }

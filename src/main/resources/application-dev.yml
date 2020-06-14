@@ -1,5 +1,35 @@
+#spring:
+#  datasource:
+#    url: jdbc:oracle:thin:@192.168.1.108:1521:orcl
+#    username: arh
+#    password: 123
+
+logging:
+  file:
+    name: C:\DougLea\IdeaProjects\MyLog\springBootDemoLog\myLog.log
+  level:
+    root: info
+    com.arh.springbootdemo.web.controller: debug
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL57Dialect
   datasource:
-    url: jdbc:oracle:thin:@192.168.1.108:1521:orcl
-    username: arh
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.108:3306/testdb?useUnicode=true&characterEncoding=utf8
+    username: root
     password: 123
+    type: com.alibaba.druid.pool.DruidDataSource
+    #数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    validationQuery: select 1 from dual
+    #监控
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500

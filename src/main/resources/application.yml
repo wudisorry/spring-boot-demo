@@ -6,8 +6,15 @@ debug: false
 
 spring:
   profiles:
-    active: com
-
+    active: dev
+  data:
+    mongodb:
+#      database: firstDB
+#      host: 127.0.0.1
+#      port: 27017
+#      username: arh
+#      password: 123
+      uri: mongodb://arh:123@127.0.0.1:27017/firstDB
 
 anno:
   configuration:

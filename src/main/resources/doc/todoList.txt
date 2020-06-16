@@ -37,3 +37,14 @@ https://github.com/9526xu/redis-lock/blob/master/src/main/java/com/example/lock/
 
 11.信息论
 https://www.zhihu.com/question/60227816/answer/1274071217
+
+12.mysql读写分离
+mongo 分片 事务
+
+13
+1、Spring Boot、Spring MVC、Spring之间的区别？（Spring Boot本质是什么？）
+2、Spring Boot Starter是什么？
+3、如何自定义Spring Boot Starter？（如何扩展Spring Boot）
+4、Spring Boot的自动装配原理是什么？（源码分析哦）
+5、Spring Boot的启动流程是什么？
+6、有没有看过Spring Boot源码？你觉得最神奇的地方是什么？

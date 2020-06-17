@@ -48,3 +48,14 @@ mongo 分片 事务
 4、Spring Boot的自动装配原理是什么？（源码分析哦）
 5、Spring Boot的启动流程是什么？
 6、有没有看过Spring Boot源码？你觉得最神奇的地方是什么？
+7.spring 和spring mvc容器
+url：https://www.cnblogs.com/liujia1990/p/9024884.html
+会有超过2个容器吗？
+
+14
+登录 cookie
+一键直达
+
+15
+ It also automatically translates the underlying connecting library exceptions to Spring’s consistent DAO exception hierarchy so that you can switch the connectors without any code changes, as the operation semantics remain the same.
+ 统一异常，无关实现

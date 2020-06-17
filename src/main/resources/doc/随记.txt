@@ -169,6 +169,22 @@ https://blog.csdn.net/stronglyh/article/details/81024588
 引入外部配置文件组：${anotherfile.configinject}的值来自config.properties
 如果application.yml和其他资源文件有相同的key，就算你不指定application.yml，也会从application.yml取值
 
-
-
-
+Maven
+查看spring关于redis support官方文档时，看到了往pom文件里加一段这个：
+<repositories>
+  <repository>
+    <id>spring-milestone</id>
+    <name>Spring Maven MILESTONE Repository</name>
+    <url>https://repo.spring.io/libs-milestone</url>
+  </repository>
+</repositories>
+引申出看了眼maven关于<repositories>的介绍
+url:https://www.cnblogs.com/shuaiandjun/p/7604619.html
+从上述文章我们知道，这个标签是用来配置远程仓库的，在所有Maven POM的父POM里也有这段配置，
+远程url地址为http://repo.maven.apache.org/maven2
+当然配置远程参考也能在settings.xml里实现
+然后又引申出了maven项目的snapshot快照库版本和release发布库版本
+参考url：https://www.cnblogs.com/rwxwsblog/p/6029636.html
+配置为<version>0.1-SNAPSHOT</version>再通过mvn deploy命令发布
+maven的依赖管理是基于版本管理的，对于发布状态的artifact，如果版本号相同，即使我们内部的镜像服务器上的组件比本地新，maven也不会主动下载的。
+如果我们在开发阶段都是基于正式发布版本来做依赖管理，那么遇到这个问题，就需要升级组件的版本号，可这样就明显不符合要求和实际情况了。但是，如果是基于快照版本，那么问题就自热而然的解决了，而maven已经为我们准备好了这一切。

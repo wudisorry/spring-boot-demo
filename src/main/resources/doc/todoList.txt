@@ -59,3 +59,8 @@ url：https://www.cnblogs.com/liujia1990/p/9024884.html
 15
  It also automatically translates the underlying connecting library exceptions to Spring’s consistent DAO exception hierarchy so that you can switch the connectors without any code changes, as the operation semantics remain the same.
  统一异常，无关实现
+
+
+16
+多个profile
+从老项目来看需要在pom文件里配置<profile>标签，在各自yml文件里还要写上spring: profiles: dev,如果还写了logging: config: classpath:logback-spring.xml，那还需要在这个xml里加配置

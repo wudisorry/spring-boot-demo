@@ -191,3 +191,12 @@ maven的依赖管理是基于版本管理的，对于发布状态的artifact，�
 
 spring redis
 http://xxgblog.com/2020/03/12/spring-redistemplate-listoperations/
+
+netty
+https://www.zhihu.com/question/24322387
+老钱的2个例子
+https://zhuanlan.zhihu.com/p/35720383
+https://zhuanlan.zhihu.com/p/36064672
+RPC框架
+https://www.zhihu.com/question/25536695
+https://www.jianshu.com/p/dfc7b444581c

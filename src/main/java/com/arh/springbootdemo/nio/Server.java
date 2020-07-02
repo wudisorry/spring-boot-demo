@@ -7,7 +7,7 @@ package com.arh.springbootdemo.nio;
  **/
 public class Server {
 
-    private static final int DEFAULT_port = 8990;
+    public static final int DEFAULT_port = 8990;
 
     private static ServerHandle serverHandle;
 

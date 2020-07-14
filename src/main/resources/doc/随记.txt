@@ -209,3 +209,8 @@ https://blog.csdn.net/u011381576/article/details/79876754
 https://mp.weixin.qq.com/s?__biz=MzU0MzQ5MDA0Mw==&mid=2247483907&idx=1&sn=3d5e1384a36bd59f5fd14135067af1c2&chksm=fb0be897cc7c61815a6a1c3181f3ba3507b199fd7a8c9025e9d8f67b5e9783bc0f0fe1c73903&scene=21#wechat_redirect
 
 redis cluster picture
+
+NIO
+首先明确：用户程序进行的IO操作，基本上是用到read&write两大系统调用，read&write系统调用并不是在物理设备和内存之间直接进行数据交换，而是会有个内核缓冲区。
+read系统调用，是把数据从内核缓冲区复制到进程缓冲区；而write系统调用，是把数据从进程缓冲区复制到内核缓冲区。这个两个系统调用，都不负责数据在内核缓冲区和磁盘之间的交换。底层的读写交换，是由操作系统kernel内核完成的。
+https://www.cnblogs.com/crazymakercircle/p/10225159.html

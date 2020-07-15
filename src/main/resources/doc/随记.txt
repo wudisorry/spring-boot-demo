@@ -206,11 +206,39 @@ https://www.baidu.com/s?wd=netty%E6%A1%86%E6%9E%B6%E4%B8%8Espring%E5%8C%BA%E5%88
 
 NIO
 https://blog.csdn.net/u011381576/article/details/79876754
-https://mp.weixin.qq.com/s?__biz=MzU0MzQ5MDA0Mw==&mid=2247483907&idx=1&sn=3d5e1384a36bd59f5fd14135067af1c2&chksm=fb0be897cc7c61815a6a1c3181f3ba3507b199fd7a8c9025e9d8f67b5e9783bc0f0fe1c73903&scene=21#wechat_redirect
 
 redis cluster picture
 
 NIO
-首先明确：用户程序进行的IO操作，基本上是用到read&write两大系统调用，read&write系统调用并不是在物理设备和内存之间直接进行数据交换，而是会有个内核缓冲区。
+原理
+用户程序进行的IO操作，基本上是用到read&write两大系统调用，read&write系统调用并不是在物理设备和内存之间直接进行数据交换，而是会有个内核缓冲区。
 read系统调用，是把数据从内核缓冲区复制到进程缓冲区；而write系统调用，是把数据从进程缓冲区复制到内核缓冲区。这个两个系统调用，都不负责数据在内核缓冲区和磁盘之间的交换。底层的读写交换，是由操作系统kernel内核完成的。
+缓冲区的目的是为了减少损耗的时间和性能
+阻塞IO
+默认情况下所有的socket都是blocking，当用户进程调用了recvfrom这个系统调用，内核就开始了IO的第一个阶段：等待数据准备。对于network io来说，很多时候数据在一开始还没有到达（比如，还没有收到一个完整的UDP包），
+这个时候内核就要等待足够的数据到来。而在用户进程这边，整个进程会被阻塞。当内核一直等到数据准备好了，它就会将数据从内核缓冲区中拷贝到用户内存，然后内核返回结果，用户进程才解除block的状态，重新运行起来。
+所以，blocking IO的特点就是在IO执行的两个阶段都被block了。
+
+非阻塞IO
+通过设置socket使其变为non-blocking。当用户进程调用recvfrom时，系统不会阻塞用户进程，而是立刻返回一个ewouldblock错误。
+从用户进程角度讲，并不需要等待，而是马上就得到了一个结果。用户进程判断标志是ewouldblock时，就知道数据还没准备好。这时它就可以去做其他的事了，当然它可以再次发送recvfrom。
+一旦内核中的数据准备好了，并且又再次收到了用户进程的system call，那么它马上就将数据拷贝到了用户内存，然后返回。
+当一个应用程序在一个循环里对一个非阻塞调用recvfrom，我们称为轮询。应用程序不断轮询内核，看看是否已经准备好了某些操作。这通常是浪费CPU时间，但这种模式偶尔会遇到。
+
+IO复用
+为了解决同步非阻塞IO模型中轮询等待问题。
+select,epoll模型
+select/epoll的好处就在于单个process就可以同时处理多个网络连接的IO。它的基本原理就是select/epoll这个function会不断的轮询所负责的所有socket，当某个socket有数据到达了，就通知用户进程。
+当用户进程调用了select，那么整个进程会被block，而同时，内核会“监视”所有select负责的socket，当任何一个socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从内核拷贝到用户进程。
+epoll是select的升级版，select和epoll区别在于：
+select轮询
+epoll通过事件，只管活跃的连接
+参考url：
+https://mp.weixin.qq.com/s?__biz=MzU0MzQ5MDA0Mw==&mid=2247483907&idx=1&sn=3d5e1384a36bd59f5fd14135067af1c2&chksm=fb0be897cc7c61815a6a1c3181f3ba3507b199fd7a8c9025e9d8f67b5e9783bc0f0fe1c73903&scene=21#wechat_redirect
 https://www.cnblogs.com/crazymakercircle/p/10225159.html
+
+JAVA NIO代码
+见例子
+
+Netty
+

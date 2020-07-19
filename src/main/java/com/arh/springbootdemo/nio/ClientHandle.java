@@ -117,6 +117,8 @@ public class ClientHandle implements Runnable {
         ByteBuffer byteBuffer = ByteBuffer.allocate(bytes.length);
         byteBuffer.put(bytes);
         socketChannel.write(byteBuffer);
+        //wrap方法可以代替上面的写法,把一个byte数组或byte数组的一部分包装成ByteBuffer
+        //ByteBuffer byteBuffer1 = ByteBuffer.wrap(msg.getBytes());
     }
 
     public void sendMsg(String msg) throws IOException {

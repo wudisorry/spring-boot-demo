@@ -29,6 +29,7 @@ public class ServerHandle implements Runnable {
         try {
             selector = Selector.open();
             serverSocketChannel = ServerSocketChannel.open();
+            //设置为非阻塞 nio必设
             serverSocketChannel.configureBlocking(false);
             serverSocketChannel.socket().bind(new InetSocketAddress(port), DEFAULT_BACKLOG);
 //            serverSocketChannel.bind()
@@ -49,7 +50,12 @@ public class ServerHandle implements Runnable {
     public void run() {
         while (started) {
             try {
-                selector.select(1000);
+                //无参select()方法是阻塞方法，可以调用重载方法来马上获取是否有事件发生的结果
+                if (selector.select(1000) == 0) {
+                    System.out.println("服务器等待了1秒，没有事件发生");
+                    continue;
+                }
+                //返回的事件集合，通过SelectionKey反向获取通道
                 Set<SelectionKey> selectionKeySet = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectionKeySet.iterator();
                 while (iterator.hasNext()) {

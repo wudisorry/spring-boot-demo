@@ -22,27 +22,35 @@ public class DiscardServer {
     }
 
     public void run() throws Exception {
-        EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
+        //创建2个线程组，bossGroup用于接收请求，workerGroup用于处理业务
+        EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            ServerBootstrap b = new ServerBootstrap(); // (2)
+            //设置服务器的帮助程序类
+            ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class) // (3)
-                    .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
+                    //使用NioServerSocketChannel作为服务器的通道实现
+                    .channel(NioServerSocketChannel.class)
+                    //设置workerGroup的EventLoop对应的管道设置处理器
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                        //给pipeline设置处理器
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast(new DiscardServerHandler());
                         }
                     })
-                    .option(ChannelOption.SO_BACKLOG, 128)          // (5)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
+                    //设置线程队列等待连接个数
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    //设置保持活动连接状态
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            // Bind and start to accept incoming connections.
-            ChannelFuture f = b.bind(port).sync(); // (7)
+            // Bind and start to accept incoming connections. 绑定并启动
+            ChannelFuture f = b.bind(port).sync();
 
             // Wait until the server socket is closed.
             // In this example, this does not happen, but you can do that to gracefully
             // shut down your server.
+            // 对关闭通道监听
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();

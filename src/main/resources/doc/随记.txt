@@ -250,3 +250,10 @@ Netty
 
 ServerBootstrap是设置服务器的帮助程序类。您可以直接使用Channel设置服务器（像ServerHandle中使用ServerSocketChannel设置非阻塞，绑定接口等）。 但是，请注意，这是一个单调乏味的过程，在大多数情况下您无需这样做
 ServerBootstrap.channel(channelClass)，就是把channelClass传给反射工厂，用于帮助创建channelClass的实例
+
+TODO
+由ChannelFuture 带出异步
+责任链模式
+SimpleChannelInboundHandler httpObject
+长连接
+粘包 拆包

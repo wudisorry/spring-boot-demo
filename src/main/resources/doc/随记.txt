@@ -244,3 +244,9 @@ Netty
 
 https://zhuanlan.zhihu.com/p/131301452
 netty面试题必不可少
+
+Netty
+官方文档：http://s0netty0io.icopy.site/wiki/user-guide-for-4.x.html
+
+ServerBootstrap是设置服务器的帮助程序类。您可以直接使用Channel设置服务器（像ServerHandle中使用ServerSocketChannel设置非阻塞，绑定接口等）。 但是，请注意，这是一个单调乏味的过程，在大多数情况下您无需这样做
+ServerBootstrap.channel(channelClass)，就是把channelClass传给反射工厂，用于帮助创建channelClass的实例

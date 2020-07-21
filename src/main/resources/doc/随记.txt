@@ -257,3 +257,5 @@ TODO
 SimpleChannelInboundHandler httpObject
 长连接
 粘包 拆包
+
+https://zhuanlan.zhihu.com/p/151389122

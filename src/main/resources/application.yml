@@ -15,11 +15,14 @@ spring:
 #      username: arh
 #      password: 123
       uri: mongodb://arh:123@127.0.0.1:27017/firstDB
+  mvc:
+    static-path-pattern: /static/**
 
 anno:
   configuration:
     properties:
       testName: config_test_Don
+
 
 
 

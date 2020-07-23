@@ -76,6 +76,8 @@ org.apache.commons.logging.LogFactory	                org.slf4j.LoggerFactory
 当我用log4j2作为日志实现，但是用了log4j1的桥接包时发生了错误，使用mvn dependency:tree查看依赖,找到是依赖版本有问题
 可以看到log4j用了2个版本
 mvn 命令使用帮助url:https://blog.csdn.net/jiahao1186/article/details/97899713
+引入log4j-slf4j-impl后与springBoot项目的logback冲突，注释这个依赖，或者排除logback
+url:https://www.jianshu.com/p/83868eaebd2b
 
 6.logback
 Logback是由log4j创始人设计的另一个开源日志组件,官方网站： http://logback.qos.ch

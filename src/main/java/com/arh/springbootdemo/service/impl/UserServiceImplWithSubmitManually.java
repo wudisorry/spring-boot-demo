@@ -57,4 +57,9 @@ public class UserServiceImplWithSubmitManually implements IUserService {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public User queryUserById(Integer id) {
+        return null;
+    }
 }

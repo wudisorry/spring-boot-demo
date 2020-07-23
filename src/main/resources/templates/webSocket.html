@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SpringBoot模版渲染</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <script type="text/javascript" src="../static/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<p th:text="'用户ID：' + ${uuid}"/>
+<div>
+    <p th:text="'用户姓名:'+${user.name}"/>
+    <p th:text="'用户生日:'+${user.birthday}"/>
+    <p th:text="'用户邮箱:'+${user.email}"/>
+    <p th:text="'用户信息:'+${user.info}"/>
+</div>
+<div>
+    <p th:text="'端口1:'+${serverConfigInfo.port}"/>
+    <p th:text="'端口2:'+${serverConfigInfo.portFromEnv}"/>
+    <p th:text="'ip:'+${serverConfigInfo.ip}"/>
+</div>
+<div id="acceptMsg">
+</div>
+</body>
+<script>
+    var webSocketUrl = '[[${serverConfigInfo.ip}]]' + ":" + '[[${serverConfigInfo.port}]]';
+    var webSocketObj;
+
+    function connectWebSocket() {
+        var protocol = location.protocol == 'https:' ? 'wss:' : 'ws:';
+        var url = protocol + "//" + webSocketUrl + "/demo/webSocket/userId/" + '[[${user.id}]]';
+        var webSocketObj = new WebSocket(url);
+        webSocketObj.onerror = function (ev) {
+            console.log("WebSocket连接发生错误");
+        }
+        webSocketObj.onopen = function (ev) {
+            console.log("WebSocket连接成功");
+        }
+        webSocketObj.onmessage = function (ev) {
+            handlerWebSocketDate(ev.data);
+        }
+        webSocketObj.onclose = function (ev) {
+            console.log("WebSocket连接关闭");
+        }
+    }
+
+    function handlerWebSocketDate(date) {
+        console.log("接收到消息:" + date);
+        var html = "<span>" + "从服务端接收到：" + date + "</span>";
+        $("#acceptMsg").append(html);
+    }
+
+    window.onbeforeunload = function () {
+        closeWebSocket();
+    }
+
+    function closeWebSocket() {
+        webSocketObj.close();
+    }
+
+    connectWebSocket();
+</script>
+</html>

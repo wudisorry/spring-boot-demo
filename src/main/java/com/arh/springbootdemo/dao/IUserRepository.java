@@ -11,7 +11,7 @@ import java.util.Date;
  * @Author chenli
  * @Date 2020/4/24
  **/
-public interface IUserRepository extends JpaRepository<User, Long> {
+public interface IUserRepository extends JpaRepository<User, Integer> {
     User findByName(String name);
 
     User findByNameOrBirthday(String name, Date birthday);

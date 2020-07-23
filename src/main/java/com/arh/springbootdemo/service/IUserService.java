@@ -10,4 +10,6 @@ import com.arh.springbootdemo.entity.User;
 public interface IUserService {
 
     void addUser(User user);
+
+    User queryUserById(Integer id);
 }

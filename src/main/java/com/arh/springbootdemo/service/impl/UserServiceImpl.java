@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 
 /**
  * @Description
@@ -30,5 +32,12 @@ public class UserServiceImpl implements IUserService {
     public void addUser(User user) {
         userRepository.save(user);
         //throw new MyServiceException("就是想报错");
+    }
+
+    @Override
+    public User queryUserById(Integer id) {
+        Optional<User> byId = userRepository.findById(id);
+        User u = byId.orElse(new User());
+        return u;
     }
 }

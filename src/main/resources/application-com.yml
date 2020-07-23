@@ -3,7 +3,7 @@ logging:
     name: c:/Chen_code/MyLog/11.log
   level:
     root: info
-    com.arh.springbootdemo.web.controller: debug
+    com.arh.springbootdemo: debug
 spring:
   jpa:
     hibernate:

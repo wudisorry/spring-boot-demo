@@ -1,0 +1,16 @@
+websocket
+CacheCorpListener 监听启动 清楚缓存查企业放缓存
+ScheduleQueryTask定时任务，从缓存拿企业，放线程中去
+BatchHandleCorpThread 获取当前企业并设置数据源，如果是发邮件则发布要发邮件的消息 jms，消费端去执行发邮件
+发邮件涉及到rest调用api
+AbstractRoutingDataSource 设置多数据源
+
+TODO
+多数据源
+定时任务
+jms MQ
+rest调用
+
+ES
+
+

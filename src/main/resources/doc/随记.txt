@@ -259,3 +259,5 @@ SimpleChannelInboundHandler httpObject
 粘包 拆包
 
 https://zhuanlan.zhihu.com/p/151389122
+
+https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAwMDczMjMwOQ==&action=getalbum&album_id=1401151239047561216&subscene=159&subscene=1&scenenote=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzAwMDczMjMwOQ%3D%3D%26mid%3D2247483873%26idx%3D1%26sn%3Db115d1167b0e27c02baa4327bd113d1b%26chksm%3D9ae53c1bad92b50d5124067ec9060712369cef70daf206b5ce4b0b567a51a9a38974c802395d%26mpshare%3D1%26scene%3D1%26srcid%3D%26sharer_sharetime%3D1588404357752%26sharer_shareid%3D2e35f8d53eddc6555fb5246f1436ae3e%26exportkey%3DAbWcvMbeL392hQRXu%2F6vli0%3D%26pass_ticket%3DmkWbbuXzRdIXWkc%252bCwqVy3%252bncgnzLz3V6Fr%2FIxn18q0shs0kALQtt%2Frh%2FN6%252bzg40%23rd#wechat_redirect

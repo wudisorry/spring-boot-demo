@@ -260,4 +260,28 @@ SimpleChannelInboundHandler httpObject
 
 https://zhuanlan.zhihu.com/p/151389122
 
+事件
 https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzAwMDczMjMwOQ==&action=getalbum&album_id=1401151239047561216&subscene=159&subscene=1&scenenote=https%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzAwMDczMjMwOQ%3D%3D%26mid%3D2247483873%26idx%3D1%26sn%3Db115d1167b0e27c02baa4327bd113d1b%26chksm%3D9ae53c1bad92b50d5124067ec9060712369cef70daf206b5ce4b0b567a51a9a38974c802395d%26mpshare%3D1%26scene%3D1%26srcid%3D%26sharer_sharetime%3D1588404357752%26sharer_shareid%3D2e35f8d53eddc6555fb5246f1436ae3e%26exportkey%3DAbWcvMbeL392hQRXu%2F6vli0%3D%26pass_ticket%3DmkWbbuXzRdIXWkc%252bCwqVy3%252bncgnzLz3V6Fr%2FIxn18q0shs0kALQtt%2Frh%2FN6%252bzg40%23rd#wechat_redirect
+
+SpringBoot启动过程中发射事件时事件广播者是层层委托职责的，起初由SpringApplicationRunListeners对象承担，
+然后SpringApplicationRunListeners对象将广播事件职责委托给EventPublishingRunListener对象，
+最终EventPublishingRunListener对象将广播事件的职责委托给SimpleApplicationEventMulticaster对象。
+为什么搞这么复杂，猜测为了好扩展
+
+Spring Application启动到ApplicationContext创建完成，当中是有一段时间的，如果这段时间发布了事件，则ApplicationContext里的监听器是不能发挥作用的，
+因此这时就不能用@Bean，@Component等把监听器纳入到Spring容器中,这样的事件有ApplicationEnvironmentPreparedEvent
+事件的注册就有以下2种方式：
+1.SpringApplication.addListeners()
+2.添加一个META-INF/spring.factories文件，然后在了按照以下格式添加要注册的事件：org.springframework.context.ApplicationListener=com.XXX.XXX.MyListener
+
+SmartApplicationListener，Spring提供的新的监听器接口，不用泛型，使用supportsEventType()方法来指定监听事件类型
+
+处理事件默认同步的，可以使用@EnableAsync和@Async来异步处理事件,默认使用spring boot内置的线程池，当然也可以覆盖
+
+定时任务
+1.简单的定时任务
+（1）使用@EnableScheduling
+（2）在需要定时执行的方法上用@Scheduled(cron=XXX)
+
+https://zhuanlan.zhihu.com/p/79644891
+https://github.com/jufeng98/java-master

@@ -1,5 +1,6 @@
 package com.arh.springbootdemo.web.controller.test;
 
+import com.arh.springbootdemo.configuration.WebSocketConfig;
 import com.arh.springbootdemo.service.IUseAdviceService;
 import com.arh.springbootdemo.util.ApplicationContextUtil;
 import com.arh.springbootdemo.util.PropertyBeanWithAnnoConfigP;
@@ -29,6 +30,9 @@ public class TestGrammarController {
     @Autowired
     private IUseAdviceService useAdviceService;
 
+    @Autowired
+    private WebSocketConfig webSocketConfig;
+
     @RequestMapping("/testProperty")
     public void tp() {
         logger.debug("start test propertyBeanWithAnnoValue");
@@ -45,6 +49,12 @@ public class TestGrammarController {
     @RequestMapping("/testAdvice")
     public void testAdvice(){
         useAdviceService.sayHello();
+    }
+
+    @RequestMapping("/testImport")
+    public void testImport(){
+        //看@Configuration标注的类是否纳入spring上下文
+        System.out.println(webSocketConfig);
     }
 
 }

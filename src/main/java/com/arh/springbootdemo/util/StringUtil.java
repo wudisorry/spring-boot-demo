@@ -41,15 +41,19 @@ public class StringUtil extends StringUtils {
         }
     }
 
-    public static List<String> getAtUser(String str){
+    public static List<String> getAtUser(String str) {
         Pattern p = Pattern.compile("(?<=@).*?(?= )");
         Matcher m = p.matcher(str);
-        List<String> result=new ArrayList<>();
-        while(m.find()){
-            if(StringUtils.isNoneBlank(m.group().trim())){
+        List<String> result = new ArrayList<>();
+        while (m.find()) {
+            if (StringUtils.isNoneBlank(m.group().trim())) {
                 result.add(m.group().trim());
             }
         }
         return result;
+    }
+
+    public static boolean hasLength(String str) {
+        return str != null && str.length() > 0;
     }
 }

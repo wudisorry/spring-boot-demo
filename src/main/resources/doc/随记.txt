@@ -285,3 +285,12 @@ SmartApplicationListener，Spring提供的新的监听器接口，不用泛型�
 
 https://zhuanlan.zhihu.com/p/79644891
 https://github.com/jufeng98/java-master
+https://zhuanlan.zhihu.com/p/61526583
+
+schedule
+xxljob
+
+多数据源
+https://www.jianshu.com/p/b2f818b742a2
+下3url
+https://www.jianshu.com/p/cd99b94fe9de

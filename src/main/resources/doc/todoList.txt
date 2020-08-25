@@ -64,3 +64,9 @@ url：https://www.cnblogs.com/liujia1990/p/9024884.html
 16
 多个profile
 从老项目来看需要在pom文件里配置<profile>标签，在各自yml文件里还要写上spring: profiles: dev,如果还写了logging: config: classpath:logback-spring.xml，那还需要在这个xml里加配置
+
+17
+主键生成不重复
+
+18
+修改时，如何解决既有修改又有删除又有新增

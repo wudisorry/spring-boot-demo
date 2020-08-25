@@ -294,3 +294,9 @@ xxljob
 https://www.jianshu.com/p/b2f818b742a2
 下3url
 https://www.jianshu.com/p/cd99b94fe9de
+
+maven
+https://www.cnblogs.com/linvan/articles/7457990.html
+
+spring security
+https://www.felord.cn/categories/spring-security/page/3/

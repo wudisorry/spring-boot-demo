@@ -294,3 +294,27 @@ xxljob
 https://www.jianshu.com/p/b2f818b742a2
 下3url
 https://www.jianshu.com/p/cd99b94fe9de
+
+maven
+https://www.cnblogs.com/linvan/articles/7457990.html
+
+spring security
+https://www.felord.cn/categories/spring-security/page/3/
+https://www.cnblogs.com/demingblog/p/10874753.html
+
+Basic认证
+Basic认证是一种较为简单的HTTP认证方式，客户端通过明文（Base64编码格式）传输用户名和密码到服务端进行认证
+客户端如浏览器当打开需要认证的页面时，会弹出一个对话框，要求输入用户名和密码
+从图中可以看出服务端在响应头上加上WWW-Authenticate可使浏览器弹出输入框，客户端在头部加上Authorization通过认证
+缺陷
+1.用户名和密码明文（Base64）传输，需要配合HTTPS来保证信息传输的安全。
+2.即使密码被强加密，第三方仍可通过加密后的用户名和密码进行重放攻击。
+3.没有提供任何针对代理和中间节点的防护措施。
+4.假冒服务器很容易骗过认证，诱导用户输入用户名和密码。
+
+*Base64不属于加密范畴，可以被逆向解码，等同于明文，因此Basic传输认证信息是不安全的
+
+参考url：https://www.cnblogs.com/xiaoxiaotank/p/11009796.html
+
+
+

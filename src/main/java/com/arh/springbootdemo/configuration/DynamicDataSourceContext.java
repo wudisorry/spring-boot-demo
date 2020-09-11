@@ -7,6 +7,21 @@ package com.arh.springbootdemo.configuration;
  **/
 public class DynamicDataSourceContext {
 
+    public static final String BUSINESS_KEY = "business";
 
+    public static final String USER_KEY = "user";
 
+    public static final ThreadLocal<String> threadLocal = new ThreadLocal<>();
+
+    public static void setDataSourceKey(String key) {
+        threadLocal.set(key);
+    }
+
+    public static String getDataSourceKey() {
+        return threadLocal.get();
+    }
+
+    public static void clearDataSourceKey() {
+        threadLocal.remove();
+    }
 }

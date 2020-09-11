@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2020/3/30
  **/
 @RestController
+@RequestMapping("/test")
 public class TestGrammarController {
 
     private static final Logger logger = LoggerFactory.getLogger(TestGrammarController.class);
@@ -33,7 +34,7 @@ public class TestGrammarController {
     @Autowired
     private WebSocketConfig webSocketConfig;
 
-    @RequestMapping("/testProperty")
+    @RequestMapping("/property")
     public void tp() {
         logger.debug("start test propertyBeanWithAnnoValue");
         PropertyBeanWithAnnoValue propertyBeanWithAnnoValue = new PropertyBeanWithAnnoValue();
@@ -46,7 +47,7 @@ public class TestGrammarController {
         logger.debug(autoPropertyBeanWithAnnoConfigP.getTestName());
     }
 
-    @RequestMapping("/testAdvice")
+    @RequestMapping("/advice")
     public void testAdvice(){
         useAdviceService.sayHello();
     }

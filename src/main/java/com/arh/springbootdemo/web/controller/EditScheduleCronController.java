@@ -1,13 +1,11 @@
 package com.arh.springbootdemo.web.controller;
 
-import com.arh.springbootdemo.dao.IScheduleCronRepository;
-import com.arh.springbootdemo.entity.ScheduleCron;
-import com.arh.springbootdemo.schedule.PrintTextTaskServiceImpl;
-import com.arh.springbootdemo.util.StringUtil;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.arh.springbootdemo.service.IScheduleCronService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * @Description
@@ -18,18 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/scheduleCron")
 public class EditScheduleCronController {
 
-    @Autowired
-    private IScheduleCronRepository scheduleCronRepository;
+    @Resource(name = "scheduleCronServiceImpl")
+    private IScheduleCronService scheduleCronService;
 
     @RequestMapping("/add/{name}")
     public void addScheduleCron(@PathVariable("name") String name) {
 
-        ScheduleCron scheduleCron = new ScheduleCron();
-        scheduleCron.setName(name);
-
-        scheduleCron.setCronExpression("*/10 * * * * ?");
-
-        scheduleCron.setClassName(PrintTextTaskServiceImpl.class.getName());
-        scheduleCronRepository.save(scheduleCron);
+        scheduleCronService.addDefaultScheduleCron();
     }
 }

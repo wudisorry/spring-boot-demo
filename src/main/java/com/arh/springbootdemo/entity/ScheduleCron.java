@@ -11,42 +11,31 @@ import java.util.Date;
  * @Date 2020/7/29
  **/
 @Entity
-@Table(name = "t_schedule_cron")
-public class ScheduleCron implements Serializable {
+@Table(name = "T_SCHEDULE_CRON")
+public class ScheduleCron extends BasicEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "F_ID")
     private Integer id;
 
-    @Column
+    @Column(name = "F_NAME")
     private String name;
 
-    @Column(name = "classname")
+    @Column(name = "F_CLASS_NAME")
     private String className;
 
-    @Column(name = "cronexpression")
+    @Column(name = "F_CRON_EXPRESSION")
     private String cronExpression;
 
-    @Column(name = "taskexplain")
+    @Column(name = "F_TASK_EXPLAIN")
     private String taskExplain;
 
-    @Column
+    @Column(name = "F_STATUS")
     private Integer status;
 
-    @Column(name = "exceptionmsg")
+    @Column(name = "F_EXCEPTION_MSG")
     private String exceptionMsg;
-
-    @Column(name = "adduser")
-    private Integer addUser;
-
-    @Column(name = "adddate")
-    private Date addDate;
-
-    @Column(name = "updateuser")
-    private Integer updateUser;
-
-    @Column(name = "updatedate")
-    private Date updateDate;
 
     public Integer getId() {
         return id;
@@ -104,35 +93,4 @@ public class ScheduleCron implements Serializable {
         this.exceptionMsg = exceptionMsg;
     }
 
-    public Integer getAddUser() {
-        return addUser;
-    }
-
-    public void setAddUser(Integer addUser) {
-        this.addUser = addUser;
-    }
-
-    public Date getAddDate() {
-        return addDate;
-    }
-
-    public void setAddDate(Date addDate) {
-        this.addDate = addDate;
-    }
-
-    public Integer getUpdateUser() {
-        return updateUser;
-    }
-
-    public void setUpdateUser(Integer updateUser) {
-        this.updateUser = updateUser;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
 }

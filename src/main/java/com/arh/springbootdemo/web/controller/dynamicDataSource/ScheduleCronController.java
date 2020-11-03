@@ -17,7 +17,7 @@ public class ScheduleCronController {
 
 
     @RequestMapping("/addDefault")
-    public void addDefault(){
+    public void addDefault() {
         scheduleCronService.addDefaultScheduleCron();
     }
 

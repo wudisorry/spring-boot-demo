@@ -6,8 +6,7 @@ import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEven
 import org.springframework.context.ApplicationListener;
 
 /**
- * @Description
- * 不能使用@Component，因为此事件发布阶段Spring容器还没开始运行
+ * @Description 不能使用@Component，因为此事件发布阶段Spring容器还没开始运行
  * @Author chenli
  * @Date 2020/7/29
  **/

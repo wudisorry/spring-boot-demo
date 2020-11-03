@@ -48,12 +48,12 @@ public class TestGrammarController {
     }
 
     @RequestMapping("/advice")
-    public void testAdvice(){
+    public void testAdvice() {
         useAdviceService.sayHello();
     }
 
     @RequestMapping("/testImport")
-    public void testImport(){
+    public void testImport() {
         //看@Configuration标注的类是否纳入spring上下文
         System.out.println(webSocketConfig);
     }

@@ -51,8 +51,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
     private static final Logger logger = LoggerFactory.getLogger(SendRequestServiceImpl.class);
 
     /**
-     *
-     * @param url 要带上协议
+     * @param url      要带上协议
      * @param paramMap
      */
     @Override
@@ -112,8 +111,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
     }
 
     /**
-     *
-     * @param url 要带上协议
+     * @param url      要带上协议
      * @param paramMap
      */
     @Override
@@ -172,7 +170,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
         }
     }
 
-    class MyResponseHandler implements ResponseHandler{
+    class MyResponseHandler implements ResponseHandler {
 
         @Override
         public Object handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
@@ -217,7 +215,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
                 httpexecutor.postProcess(response, httpproc, coreContext);
 
                 System.out.println("<< Response: " + response.getStatusLine());
-                System.out.println(EntityUtils.toString(response.getEntity(),"utf-8"));
+                System.out.println(EntityUtils.toString(response.getEntity(), "utf-8"));
                 System.out.println("==============");
                 if (!connStrategy.keepAlive(response, coreContext)) {
                     conn.close();
@@ -231,7 +229,7 @@ public class SendRequestServiceImpl implements ISendRequestService {
     }
 
 
-    private HttpClient getHttpClient(){
+    private HttpClient getHttpClient() {
         PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager();
         return null;
     }

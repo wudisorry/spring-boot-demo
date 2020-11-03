@@ -5,7 +5,7 @@ package com.arh.springbootdemo.exception;
  * @Author chenli
  * @Date 2020/6/11
  **/
-public class MyServiceException extends RuntimeException{
+public class MyServiceException extends RuntimeException {
     public MyServiceException() {
         super();
     }

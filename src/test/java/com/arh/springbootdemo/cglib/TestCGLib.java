@@ -12,7 +12,7 @@ import org.junit.Test;
 public class TestCGLib {
 
     @Test
-    public void test(){
+    public void test() {
         //System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "C:\\Chen_code\\spring-boot-demo\\src\\main\\java\\com\\arh\\springbootdemo\\cglib");
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(TargetBean.class);

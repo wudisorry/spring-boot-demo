@@ -25,14 +25,14 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n"/>
             <Policies>
                 <!-- 跟filePattern里配置的文件名呼应，现在配置是每分钟触发一次 -->
-                <TimeBasedTriggeringPolicy interval="1" />
+                <TimeBasedTriggeringPolicy interval="1"/>
             </Policies>
-            <DefaultRolloverStrategy max="20" />
+            <DefaultRolloverStrategy max="20"/>
         </RollingRandomAccessFile>
     </Appenders>
     <Loggers>
         <Logger name="mylog" level="trace" additivity="false">
-            <AppenderRef ref="MyRollingFile" />
+            <AppenderRef ref="MyRollingFile"/>
         </Logger>
         <Root level="error">
             <AppenderRef ref="Console"/>

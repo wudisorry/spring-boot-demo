@@ -5,8 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @Description
- * 如果Column注解定义的字段名和属性名一样,会被忽略。
+ * @Description 如果Column注解定义的字段名和属性名一样, 会被忽略。
  * @Author chenli
  * @Date 2020/7/29
  **/

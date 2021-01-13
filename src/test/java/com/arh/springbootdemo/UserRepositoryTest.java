@@ -28,5 +28,6 @@ public class UserRepositoryTest {
         List<User> userList1 = new ArrayList<>(userList);
 //        user.setBirthday();
 //        userRepository.save()
+        int[] array = new int[]{1,2 };
     }
 }

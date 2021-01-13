@@ -1,8 +1,13 @@
 package com.arh.springbootdemo.cglib;
 
+import com.arh.springbootdemo.entity.User;
 import net.sf.cglib.core.DebuggingClassWriter;
 import net.sf.cglib.proxy.Enhancer;
 import org.junit.Test;
+
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Description
@@ -21,5 +26,12 @@ public class TestCGLib {
         proxyBean.sayHello();
         proxyBean.finalSayHello();
         proxyBean.getMyName();
+    }
+
+    @Test
+    public void testClass() throws Exception{
+        Class<User> clazz = User.class;
+        Method method = clazz.getMethod("getName");
+        System.out.println(method.getDeclaringClass());
     }
 }
